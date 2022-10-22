@@ -1,0 +1,15 @@
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+
+# Imported translations (autom)
+*.translation
+
+# Mono-specific ignores
+.nomo/
+data_*/
+
+# Extra folders
+Builds/
+TemporalAssets/
