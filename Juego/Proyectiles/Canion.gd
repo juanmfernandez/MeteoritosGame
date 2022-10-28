@@ -33,7 +33,6 @@ func almacenar_puntos_disparo() -> void:
 	for nodo in get_children():
 		if nodo is Position2D:
 			puntos_disparo.append(nodo)
-			print("Almacenando puntos disparo")
 
 func disparar() -> void:
 	esta_enfriado = false
@@ -47,8 +46,8 @@ func disparar() -> void:
 			velocidad_proyectil,
 			danio_proyectil
 			)
-		print("Disparando")
 		Eventos.emit_signal("disparo", new_proyectil)
 
 func _on_TimerEnfriamiento_timeout() -> void:
+	disparo_sfx.stop()
 	esta_enfriado = true

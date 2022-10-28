@@ -11,12 +11,20 @@ var dir_rotacion:int = 0
 
 # Attrib onready
 onready var canion:Canion = $Canion
+onready var laser:RayoLaser = $LaserBeam2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 # Methods
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("disparo_laser"):
+		laser.set_is_casting(true)
+
+	if event.is_action_released("disparo_laser"):
+		laser.set_is_casting(false)
+
 func _integrate_forces(_state: Physics2DDirectBodyState) -> void:
 	apply_central_impulse(empuje.rotated(rotation))
 	apply_torque_impulse(dir_rotacion * potencia_rotacion)
