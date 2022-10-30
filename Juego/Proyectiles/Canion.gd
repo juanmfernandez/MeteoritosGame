@@ -12,6 +12,8 @@ onready var timer_enfriamiento:Timer = $TimerEnfriamiento
 onready var disparo_sfx:AudioStreamPlayer2D = $DisparoSFX
 onready var esta_enfriado:bool = true
 onready var esta_disparando:bool = false setget set_esta_disparando
+onready var puede_disparar:bool = false setget set_puede_disparar
+
 
 ## Attrib
 var puntos_disparo:Array = []
@@ -19,6 +21,9 @@ var puntos_disparo:Array = []
 ## Setters & Getters
 func set_esta_disparando(disparando:bool) -> void:
 	esta_disparando = disparando
+
+func set_puede_disparar(puede:bool) -> void:
+	puede_disparar = puede
 
 # Methods
 func _ready() -> void:
