@@ -13,6 +13,7 @@ export var estela_maxima:int = 150
 var empuje:Vector2 = Vector2.ZERO
 var dir_rotacion:int = 0
 var estado_actual:int = ESTADO.SPAWN
+var hitpoints: float = 10.0
 
 # Attrib onready
 onready var canion:Canion = $Canion
@@ -20,17 +21,22 @@ onready var laser:RayoLaser = $LaserBeam2D
 onready var estela:Trail2D = $EstelaInicio/Trail2D
 onready var motor_sfx:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
-
+onready var impacto_fsx:AudioStreamPlayer = $ImpactoFSX
+onready var escudo:Escudo = $Escudo
 
 # Methods
-func _ready() -> void:
-	pass
+#func _ready() -> void:
+	#pass
 	#estados_controller(estado_actual)
 	#estados_controller(ESTADO.VIVO)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not esta_input_activo():
 		return
+	
+	#Escudo controller
+	if event.is_action_pressed("escudo") and not escudo.get_is_active():
+		escudo.activar()
 	
 	if event.is_action_pressed("disparo_laser"):
 		laser.set_is_casting(true)
@@ -66,6 +72,12 @@ func estados_controller(nuevo_estado: int) -> void:
 		_:
 			printerr("Error de estado")
 	estado_actual = nuevo_estado
+
+func recibir_danio(danio: float) -> void:
+	hitpoints -= danio
+	if hitpoints <= 0.0:
+		destruir()
+	impacto_fsx.play()
 
 func destruir() -> void:
 	estados_controller(ESTADO.MUERTO)
@@ -106,7 +118,6 @@ func player_input() -> void:
 	
 	if Input.is_action_just_released("disparo_principal"):
 		canion.set_esta_disparando(false)
-
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "spawn":
