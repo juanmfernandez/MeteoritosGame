@@ -24,12 +24,7 @@ onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var impacto_fsx:AudioStreamPlayer = $ImpactoFSX
 onready var escudo:Escudo = $Escudo
 
-# Methods
-#func _ready() -> void:
-	#pass
-	#estados_controller(estado_actual)
-	#estados_controller(ESTADO.VIVO)
-
+#Methods
 func _unhandled_input(event: InputEvent) -> void:
 	if not esta_input_activo():
 		return
