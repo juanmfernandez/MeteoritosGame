@@ -26,9 +26,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
-	print("Colisiono con Area2D")
 	daniar(area)
 
 func _on_body_entered(body: Node) -> void:
-	print("Colisiono con Node")
 	daniar(body)

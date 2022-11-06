@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/explosion_meteor.ogg-fec200e88901474c34690c1c23bcb17a.oggstr"
+
+[deps]
+
+source_file="res://Juego/Meteoritos/explosion_meteor.ogg"
+dest_files=[ "res://.import/explosion_meteor.ogg-fec200e88901474c34690c1c23bcb17a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

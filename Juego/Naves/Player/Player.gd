@@ -113,7 +113,13 @@ func player_input() -> void:
 	
 	if Input.is_action_just_released("disparo_principal"):
 		canion.set_esta_disparando(false)
-
+#Señales internas
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "spawn":
 		estados_controller(ESTADO.VIVO)
+
+
+func _on_body_entered(body: Node) -> void:
+	if body is Meteorito:
+		body.destruir()
+		destruir()
