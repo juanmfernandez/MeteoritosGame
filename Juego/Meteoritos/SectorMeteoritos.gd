@@ -2,8 +2,8 @@ class_name SectorMeteoritos
 extends Node2D
 
 ## Attrib Export
-export var cantidad_meteoritos:int = 15
-export var intervalo_spawn:float = 0.5
+export var cantidad_meteoritos:int = 3
+export var intervalo_spawn:float = 1.5
 
 ## Attrib var
 var spawners:Array
@@ -28,6 +28,7 @@ func conectar_seniales_detectores() -> void:
 
 func almacenar_spawners() -> void:
 	for spawner in $Spawmer.get_children():
+		print("Se almaceno un spawmer")
 		spawners.append(spawner)
 
 func spawner_aleatorio() -> int:
@@ -36,6 +37,7 @@ func spawner_aleatorio() -> int:
 
 func _on_MeteoroSpawmerTimer_timeout() -> void:
 	if cantidad_meteoritos == 0:
+		print("Se acabaron los met")
 		$MeteoroSpawmerTimer.stop()
 		return
 		
